@@ -13,13 +13,11 @@
   </head>
   <body>
     <div class="container mt-4">
-      
       <table class="table">
         <thead>
           <tr>
             <th>Picture </th>
             <th>Name</th>
-            
             <th>Biography</th>
             
           </tr>
@@ -28,7 +26,7 @@
           <% if(data.length){ for(var i = 0; i< data.length; i++) {%>
           <tr>
             <td>
-              <img src=" %= data[i].IMAGE%" height="200" width="200">
+              <img src=  "<%= data[i].IMAGE%>" height="160" width="160">
             </td>
             
             <td><%= data[i].AUTHOR_NAME%></td>

@@ -24,6 +24,6 @@ app.use('/book' , bookRouter);
 app.use('/author' , authorRouter);
 app.use('/publisher' , publisherRouter);
 // allow public directory
-app.use(express.static('public'))
+app.use(express.static('./public'))
 
 module.exports = app;

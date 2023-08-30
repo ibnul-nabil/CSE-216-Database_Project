@@ -6,7 +6,7 @@ const router = express.Router({mergeParams : true});
 
 router.get('/', async (req, res) =>{
    
-    let limits = 25;
+    let limits = 100;
     let offsetPage = 1;
     if( req.query.page ) offsetPage = req.query.page;
     let offset = (offsetPage-1)*limits;
