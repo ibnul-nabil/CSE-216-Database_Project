@@ -17,6 +17,7 @@
       <table class="table">
         <thead>
           <tr>
+            <th>Picture </th>
             <th>Name</th>
             
             <th>Biography</th>
@@ -26,8 +27,10 @@
         <tbody>
           <% if(data.length){ for(var i = 0; i< data.length; i++) {%>
           <tr>
+            <td>
+              <img src=" %= data[i].IMAGE%" height="200" width="200">
+            </td>
             
-           
             <td><%= data[i].AUTHOR_NAME%></td>
             <td><%= data[i].BIOGRAPHY%></td>
             
