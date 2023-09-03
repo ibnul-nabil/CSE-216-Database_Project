@@ -49,13 +49,7 @@
 
                   
             </div>
-            <!--
-            <div class="col-1 my-3">
-                
-                <img src = "azmal.jpg" class = " rounded-circle" style = "width: 50px;">
-
-            </div>
-            -->
+          
             <div class="col-2 my-3">
                 <div class="dropdown">
                     <a class="btn btn-secondary dropdown-toggle" href="home.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -80,9 +74,10 @@
             </div>
             
         </div>
+        <!-- book info div -->
         <div class="row">
             <div class=" card col-3 mb-3">
-                <img class = "card-img-top" src="logo.jpg" class = "img-thumbnail">
+                <img class = "card-img-top" src="/images/logo.jpg" class = "img-thumbnail">
                 <div class = "class-body my-3">
                     <h4 class="card-title"> BookName</h4>
                     <p class = "card-text"> Writer <br> Publisher <br> Price <br> Rating</p>
@@ -103,10 +98,11 @@
         </div>
         <div class="row">
             <div class=" card col-3">
-                <img class = "card-img-top" src="logo.jpg" class = "img-thumbnail">
+                <img class = "card-img-top" src="<%= data[0].IMAGE%>" class = "img-thumbnail">
                 <div class = "class-body my-3">
-                    <h6 class="card-title"> BookName</h6>
-                    <p class = "card-text"> Writer <br> Publisher <br> Price <br> Rating</p>
+                   
+                    <h6 class="card-title"> <%=data[0].BOOK_NAME%> </h6>
+                    <p class = "card-text"> <%=data[0].AUTHOR_ID%> <br> Publisher <br> <%=data[0].PRICE%> <br> <%=data[0].RATING%></p>
                     <div class = " d-flex justify-content-center align-items-center">
                         <button class="btn btn-primary mx-2" type="button" id = "view"> View Book</button>
                         <button class="btn btn-primary " type="button" id = "addCart"> Add to Cart</button>
@@ -124,7 +120,7 @@
         </div>
         <div class="row">
             <div class=" card col-3">
-                <img class = "card-img-top" src="logo.jpg" class = "img-thumbnail">
+                <img class = "card-img-top" src="/images/logo.jpg" class = "img-thumbnail">
                 <div class = "class-body my-3">
                     <h6 class="card-title"> BookName</h6>
                     <p class = "card-text"> Writer <br> Publisher <br> Price <br> Rating</p>
