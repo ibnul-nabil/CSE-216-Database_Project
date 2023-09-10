@@ -8,34 +8,18 @@ const router = express.Router({mergeParams : true});
 
 // same code 
 router.get('/author', async (req, res) =>{
-    let limits = 90;
-    let offsetPage = 1;
-    if( req.query.page ) offsetPage = req.query.page;
-    let offset = (offsetPage-1)*limits;
-    const authorResult = await DB_author.getAllAuthors(offset,limits);
-    res.render('authors.ejs' , { data : authorResult});
+    res.redirect('/author');
 });
 
 router.get('/book', async (req, res) =>{
-    let limits = 25;
-    let offsetPage = 1;
-    if( req.query.page ) offsetPage = req.query.page;
-    let offset = (offsetPage-1)*limits;
-    const booksResult = await DB_book.getAllBooks(offset,limits);
-    
-    res.render('books.ejs' , { data : booksResult});
+    res.redirect('/book');
    
 });
 
 router.get('/publisher', async (req, res) =>{
-    let limits = 100;
-    let offsetPage = 1;
-    if( req.query.page ) offsetPage = req.query.page;
-    let offset = (offsetPage-1)*limits;
-    const publisherResult = await DB_publisher.getAllPublishers(offset,limits);
-   
-    res.render('publishers.ejs' , { data : publisherResult});
+    res.redirect('/publisher');
 });
+
 //  same code 
 
 router.get('/:publisherID', async (req, res) =>{

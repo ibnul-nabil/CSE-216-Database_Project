@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>বই সমাহার</title>
+    <link rel = "icon" href = "/images/boisomahar.png" type = "image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+                  
+</head>
+
+  <body>
+
+    
+    <div class = "container" justify-content-center">
+        <div class="row my-3 mx-3 px-1">
+            <div class="col-2 my-3">
+                <img src = "<%=publisher[0].IMAGE%>" class = "rounded-circle" style="height: 150px;">
+                <p style="font-size:120%;text-align:center;"> <%=publisher[0].PUBLISHER_NAME%> </p>
+            </div>
+            <div class="col-6 my-1 ">
+                <div class="row">
+                    <!--                    <div class="form-inline mt-3" >
+                        <input class = "form-control" type = "search" id = "string" placeholder="Search my Books">
+                        
+                    </div>
+                -->
+                </div>
+                <div class="row my-3">
+                    <ul class="nav">
+                        <li class = "nav-item"> <a class = "nav-link" href = <%="publisher-allBooks/"+publisher[0].PUBLISHER_ID%>> View All Books </a> </li>
+                        <li class = "nav-item active"> <a class = "nav-link" href = <%="orders/"+publisher[0].PUBLISHER_ID%>> Orders </a> </li>
+                       <!-- <li class = "nav-item"> <a class = "nav-link" href = "business.html"> Business </a> </li> -->
+                    </ul>
+                </div>
+                
+            </div>
+            <!--
+                        <div class="col-1 my-1 mx-3">
+                <div class="form mt-3" >
+                    <button class="btn btn-outline-success " type="submit"> Search </button> 
+                </div>
+            </div>
+        -->
+          
+            <div class="col-2 my-3">
+                <button class = "btn btn-outline-success" type = "button" href = "add-book.html"> Add Book </button>
+            </div> <!--New book info page-->
+        </div>
+
+        <!--
+        <div class="row my-3">
+            <div class="d-flex justify-content-between">
+                <h3> Soon Stock Out! </h3>
+                <button class="btn btn-outline-success mx-2" type="button" id = "view"> View More</button>
+            </div>
+            
+        </div>
+
+        <div class="row">
+            <div class=" card col-3 mb-3">
+                <div class="d-flex justify-content-center pt-3">
+                    <img class = "card-img-top" src="logo.jpg" class = "img-thumbnail" style="height: 150px; width: 120px;">
+                </div>
+
+                <div class = "class-body my-3">
+                    <h4 class="card-title d-flex justify-content-center"> BookName</h4>
+                    <p class = "card-text d-flex justify-content-center"> Writer<br> Price <br> Stock </p>
+                    <div class = " d-flex justify-content-center align-items-center">
+                        <div class="my-1">     
+                            <h5 class = "text-center"> Update Book </h5>
+                            <form id="updateForm" method="post">
+                                <form method="get">
+                                <div class = "my-1">
+                                    <input type="number" placeholder="Price" />
+                                
+                                </div> 
+                                <div class = "my-1">
+                                    <input type = "number" placeholder="Stock" />
+                                
+                                </div>
+
+                                <div class = " d-flex justify-content-center align-items-center">
+                                    <button class = "btn btn-primary " type = "submit"> Update </button>
+                                    
+                                </div>
+                                </form>
+                            </form>
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row my-3">
+            <div class="d-flex justify-content-between">
+                <h3> Best Selling Books </h3>
+                <button class="btn btn-outline-success mx-2" type="button" id = "view"> View More</button>
+            </div>
+            
+        </div>
+
+        <div class="row">
+            <div class=" card col-3 mb-3">
+                <div class="d-flex justify-content-center pt-3">
+                    <img class = "card-img-top" src="logo.jpg" class = "img-thumbnail" style="height: 150px; width: 120px;">
+                </div>
+
+                <div class = "class-body my-3">
+                    <h4 class="card-title d-flex justify-content-center"> BookName</h4>
+                    <p class = "card-text d-flex justify-content-center"> Writer<br> Price <br> Stock </p>
+                    <div class = " d-flex justify-content-center align-items-center">
+                        <div class="my-1">     
+                            <h5 class = "text-center"> Update Book </h5>
+                            <div class = "my-1">
+                                <input type="number" placeholder="Price" />
+                            
+                            </div> 
+                            <div class = "my-1">
+                                <input type = "number" placeholder="Stock" />
+                            
+                            </div>
+
+                            <div class = " d-flex justify-content-center align-items-center">
+                                <button class = "btn btn-primary " type = "submit"> Update </button>
+                                
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row my-3">
+            <div class="d-flex justify-content-between">
+                <h3> Top Rated Books </h3>
+                <button class="btn btn-outline-success mx-2" type="button" id = "view"> View More</button>
+            </div>
+            
+        </div>
+
+        <div class="row">
+            <div class=" card col-3 mb-3">
+                <div class="d-flex justify-content-center pt-3">
+                    <img class = "card-img-top" src="logo.jpg" class = "img-thumbnail" style="height: 150px; width: 120px;">
+                </div>
+
+                <div class = "class-body my-3">
+                    <h4 class="card-title d-flex justify-content-center"> BookName</h4>
+                    <p class = "card-text d-flex justify-content-center"> Writer<br> Price <br> Stock </p>
+                    <div class = " d-flex justify-content-center align-items-center">
+                        <div class="my-1">     
+                            <h5 class = "text-center"> Update Book </h5>
+                            <div class = "my-1">
+                                <input type="number" placeholder="Price" />
+                            
+                            </div> 
+                            <div class = "my-1">
+                                <input type = "number" placeholder="Stock" />
+                            
+                            </div>
+
+                            <div class = " d-flex justify-content-center align-items-center">
+                                <button class = "btn btn-primary " type = "submit"> Update </button>
+                                
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        -->
+   
+   
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </body>

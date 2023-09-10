@@ -29,11 +29,24 @@ async function getPublisher(ID){
 
 }
 
+async function getPublisherByName(name){
+    const sql = `
+        SELECT * 
+        FROM ROKOMARI.PUBLISHER p 
+        WHERE p.PUBLISHER_NAME = :name 
+ 
+    `;
+    const binds = {
+        name: name
+    }
+    return (await database.execute(sql, binds, database.options)).rows;
+}
+
 
 async function getAllBooks(ID){
     const sql = `
         SELECT 
-        b.BOOK_ID , b.BOOK_NAME , a.AUTHOR_NAME , b.PRICE , b.IMAGE , b.EDITION 
+        b.BOOK_ID , b.BOOK_NAME , a.AUTHOR_NAME , b.PRICE , b.IMAGE , b.EDITION , b.STOCK
         FROM ROKOMARI.BOOK b JOIN ROKOMARI.AUTHOR a 
         ON b.AUTHOR_ID = a.AUTHOR_ID 
         WHERE b.PUBLISHER_ID = :id
@@ -45,6 +58,23 @@ async function getAllBooks(ID){
 
 
 }
+
+async function getAllBooksByName(name){
+
+    const sql = `
+        SELECT 
+        b.BOOK_ID , b.BOOK_NAME , a.AUTHOR_NAME , b.PRICE , b.IMAGE , b.EDITION 
+        FROM ROKOMARI.BOOK b JOIN ROKOMARI.AUTHOR a 
+        ON b.AUTHOR_ID = a.AUTHOR_ID 
+        WHERE b.PUBLISHER_ID = (SELECT PUBLISHER_ID FROM ROKOMARI.PUBLISHER WHERE PUBLISHER_NAME = :name)
+    `;
+    const binds = {
+        name : name
+    }
+    return (await database.execute(sql, binds, database.options)).rows;
+
+}
+
 async function getBookCountByPublisher(ID){
     const sql = `
         SELECT COUNT(b.BOOK_ID)  AS CNT  
@@ -64,5 +94,7 @@ module.exports = {
     getPublisher,
     getAllBooks,
     getBookCountByPublisher,
-    getAllBooks
+    getAllBooks,
+    getAllBooksByName,
+    getPublisherByName
 }

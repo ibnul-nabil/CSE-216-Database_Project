@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>বই সমাহার</title>
+    <link rel = "icon" href = "/images/boisomahar.png" type = "image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+                  
+</head>
+
+  <body>
+
+    
+    <div class = "container" justify-content-center">
+        <div class="row my-3 mx-3 px-1">
+           <!--
+            <div class="col-2 my-3">
+                <img src = "logo.jpg" width = "100" class = "img-thumbnail"> 
+            </div>
+            
+            <div class="col-6 my-1 ">
+              
+                <div class="row">
+                    <div class="form-inline mt-3" >
+                        <input class = "form-control" type = "search" id = "string" placeholder="Search my Books">
+                        
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <ul class="nav">
+                     
+                        <li class = "nav-item "> <a class = "nav-link" href = "p-home.html"> My Books </a> </li>
+                    
+                        <li class = "nav-item active"> <a class = "nav-link" href = "orders.html"> Orders </a> </li>
+                        <li class = "nav-item"> <a class = "nav-link" href = "business.html"> Business </a> </li>
+                        <li class = "nav-item"> <a class = "nav-link" href = "p-all.html"> View All Books </a> </li>
+                      
+                        </ul>
+                </div>
+                
+            </div>
+            <div class="col-1 my-1 mx-3">
+                <div class="form mt-3" >
+                    <button class="btn btn-outline-success " type="submit"> Search </button> 
+                </div>
+            </div>
+            
+            
+            <div class="col-2 my-3">
+                <button class = "btn btn-outline-success" type = "button" href = "add-book.html"> Add Book </button>
+            </div> 
+            -->
+        </div>
+
+        
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col"> Name </th>
+              <th scope="col"> Author </th>
+              <th scope="col"> ISBN </th>
+              <th scope="col"> PRICE </th>
+              <th scope="col"> STOCK </th>
+              <th scope="col"> Buyer </th>
+              <!--<th scope="col">Staus</th> -->
+            </tr>
+          </thead>
+          <!--loop-->
+          <tbody>
+        
+            <% if(list.length){ for(var i = 0; i< list.length; i++) {%>
+              <tr>      
+              
+              
+                <!--
+                <td>
+                    <select name="country" id="country">
+                        <option value="1">In Queue</option>
+                        <option value="2">Shipping</option>
+                        <option value="3">Sent to admin</option>
+                    </select>
+                </td>
+              -->
+              <td> <%=list[i].BOOK_NAME%> </td>
+              <td> <%=list[i].AUTHOR_NAME%> </td>
+              <td> <%=list[i].ISBN%> </td>
+              <td> <%=list[i].PRICE%> </td>
+              <td> <%=list[i].STOCK%> </td>
+              <td> <%=list[i].NAME%> <br>  <%=list[i].EMAIL%> <br> <%=list[i].PHONE_NO%> <br>  <%=list[i].ADDRESS%>  </td>
+              
+              
+        
+              </tr> 
+              
+              &nbsp;
+              <% } }else{ %>
+
+              <tr>
+                <td>No order.</td>
+              </tr>
+
+              <% } %>
+            <!--   
+            <tr>
+              
+              
+              <td>
+                  <select name="country" id="country">
+                      <option value="1">In Queue</option>
+                      <option value="2">Shipping</option>
+                      <option value="3">Sent to admin</option>
+                  </select>
+              </td>
+            
+            </tr>
+            -->
+          <!--loop-->
+            
+          </tbody>
+        </table>
+        
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </body>

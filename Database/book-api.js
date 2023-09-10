@@ -1,7 +1,7 @@
 const database = require('./database');
 
 async function getAllBooks(offset,limit){
-    console.log(offset,limit)
+    
     const sql = `
         SELECT b.BOOK_ID, b.BOOK_NAME  , a.AUTHOR_NAME , p.PUBLISHER_NAME , b.PRICE , b.image 
         FROM ROKOMARI.BOOK b JOIN ROKOMARI.AUTHOR a 
@@ -31,7 +31,7 @@ async function getAllBooksCount(){
 async function getBookByBookID(ID){
     const sql = `
         SELECT 
-            b.BOOK_NAME , a.AUTHOR_NAME , p.PUBLISHER_NAME ,
+            b.BOOK_ID,b.BOOK_NAME , a.AUTHOR_NAME , p.PUBLISHER_NAME ,
             b.PRICE , b.RATING , b.ISBN , b.IMAGE , b.PAGE , 
             b.EDITION , b.PUBLISHING_YEAR , b.LANGUAGE , b.REVIEW_CNT , b.SUMMARY,  
             g.NAME  
@@ -82,7 +82,7 @@ async function getBookCountByAuthor(ID){
 async function searchBook(ID){
     const sql = `
     SELECT 
-        b.BOOK_ID, b.BOOK_NAME , b.PRICE , b.IMAGE ,
+        b.BOOK_ID, b.BOOK_NAME , b.PRICE , b.IMAGE , b.GENRE
         a.AUTHOR_NAME , p.PUBLISHER_NAME 
         FROM ROKOMARI.BOOK b JOIN ROKOMARI.AUTHOR a 
             ON b.AUTHOR_ID = a.AUTHOR_ID 
@@ -90,13 +90,29 @@ async function searchBook(ID){
             ON b.PUBLISHER_ID = p.PUBLISHER_ID 
         WHERE (( LOWER(b.BOOK_NAME) LIKE '%'||LOWER(:id)||'%') OR
             ( LOWER(a.AUTHOR_NAME) LIKE '%'||LOWER(:id)||'%') OR 
-            ( LOWER(p.PUBLISHER_NAME) LIKE '%'||LOWER(:id)||'%'))
+            ( LOWER(p.PUBLISHER_NAME) LIKE '%'||LOWER(:id)||'%')) OR
+            ( LOWER(p.GENRE) LIKE '%'||LOWER(:id)||'%'))
         
         `;
     const binds = {
         id:ID
     }
     return (await database.execute(sql, binds, database.options)).rows;
+}
+async function updateBookByPublisher(bookID , price , stock){
+    const sql = `
+    BEGIN
+    rokomari.Book_update_check(:id,:price,:stock);
+    END;
+        
+        `;
+    const binds = {
+        id : bookID,
+        price: price,
+        stock: stock
+    }
+    const updateResult = (await database.execute(sql, binds, database.options));
+    return;
 }
 
 
@@ -108,5 +124,6 @@ module.exports = {
     getBookByBookID,
     getBookByAuthorID,
     getBookCountByAuthor,
-    searchBook
+    searchBook,
+    updateBookByPublisher
 }

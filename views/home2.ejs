@@ -4,19 +4,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>বই সমাহার</title>
-    <link rel = "icon" href = "/images/logo.jpg" type = "image/x-icon">
+    <link rel = "icon" href = "/images/boisomahar.png" type = "image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    
                   
 </head>
 
   <body>
 
+    <script>
+        localStorage.setItem("cid" , '<%=customer[0].CUSTOMER_ID%>');
+    </script>
+    
     
     <div class = "container" justify-content-center">
         <div class="row my-3 mx-3 px-1">
             <div class="col-2 my-3">
-                <img src = "/images/logo.jpg" width = "100" class = "img-thumbnail">
+                <img src = "/images/boisomahar.png" height = "360" width="720" class="img-thumbnail">
             </div>
             <div class="col-5 my-1 ">
                 <div class="row">
@@ -35,27 +40,25 @@
                         <li class = "nav-item "> <a class = "nav-link" href = "book"> Books </a> </li>
                         <li class = "nav-item active"> <a class = "nav-link" href = "author"> Authors </a> </li>
                         <li class = "nav-item"> <a class = "nav-link" href = "publisher"> Publishers </a> </li>
-                        <li class = "nav-item"> <a class = "nav-link" href = "about-us"> About Us </a> </li>
                         </ul>
                 </div>
                 
             </div>
-            
-            
-
-            <div class="col-1 mb-3 mt-3">
-                <a href="cart.html" class="bi bi-cart h2" data-bs-toggle="tooltip" title="My Cart"></a>                  
-            </div>
            
+            <div class="col-1 mb-3 mt-3">
+                <a href= <%="/cart/" + customer[0].CUSTOMER_ID%> class="bi bi-cart h2" data-bs-toggle="tooltip" title="My Cart"></a>                  
+            </div>
+            
             <div class="col-2 my-3">
                 <div class="dropdown">
                     <a class="btn btn-secondary dropdown-toggle" href="home.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       My Profile
                     </a>
                   
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="user-info.html">My informations</a></li>
-                        <li><a class="dropdown-item" href="cart.html">My Cart</a></li>
+                    <ul class="dropdown-menu">  
+                        <li><a class="dropdown-item" href= <%="/user-info/" + customer[0].CUSTOMER_ID%> >My informations</a></li>
+
+                       
                         <li><a class="dropdown-item" href="wishlist.html">My Wishlist</a></li>
                         <li><a class="dropdown-item" href="vouchers.html">Available Vouchers</a></li>
                         

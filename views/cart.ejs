@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>বই সমাহার</title>
+    <link rel = "icon" href = "/images/boisomahar.png" type = "image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+                  
+</head>
+
+  <body>
+
+    
+    <div class = "container" justify-content-center">
+        <div class="row my-3 mx-3 px-1">
+            <div class="col-2 my-3">
+                <img src =  "/images/boisomahar.png"  height = "360" width="720" class = "img-thumbnail">
+            </div>
+            <div class="col-5 my-1 ">
+                <div class="row">
+                    <!--
+                    <div class="form-inline mt-3" >
+                        <input class = "form-control" type = "search" id = "string" placeholder="Search by Books/Authors">
+                        
+                    </div>
+                -->
+                </div>
+                <div class="row my-3">
+                    <ul class="nav">
+                        <li class = "nav-item "> <a class = "nav-link" href = "book"> Books </a> </li>
+                        <li class = "nav-item active"> <a class = "nav-link" href = "author"> Authors </a> </li>
+                        <li class = "nav-item"> <a class = "nav-link" href = "publisher"> Publishers </a> </li>
+                        
+                        </ul>
+                </div>
+                
+            </div>
+            <!--
+            <div class="col-1 my-1 mx-3">
+                <div class="form mt-3" >
+                    <button class="btn btn-outline-success " type="submit"> Search </button> 
+                </div>
+            </div>
+            
+            <div class="col-1 mb-3 mt-3">
+                <a href="cart.html" class="bi bi-cart h2" data-bs-toggle="tooltip" title="My Cart"></a>
+
+                  
+            </div>
+            
+            <div class="col-1 my-3">
+                
+                <img src = "azmal.jpg" class = " rounded-circle" style = "width: 50px;">
+
+            </div>
+            -->
+            <div class="col-2 my-3">
+                <div class="dropdown">
+                    <a class="btn btn-secondary dropdown-toggle" href="home.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      My Profile
+                    </a>
+                  
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="user-info.html">My informations</a></li>
+                        <li><a class="dropdown-item" href="cart.html">My Cart</a></li>
+                        <li><a class="dropdown-item" href="wishlist.html">My Wishlist</a></li>
+                        <li><a class="dropdown-item" href="vouchers.html">Available Vouchers</a></li>
+                        
+                        <li><a class="dropdown-item" href="track.html">Track My Order</a></li>
+                        <li><a class="dropdown-item" href="history.html">Purchase History</a></li>
+                      </ul>
+                  </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-9">
+                <h4> My Cart </h4>
+                <div class="row">
+                    <!--Here all cart books will be looped-->
+                    <% if(books.length){ for(var i = 0; i< books.length; i++) {%>
+                        <div class=" card col-3 py-3">
+                                            <div class="d-flex justify-content-center">
+                                                <img class = "card-img-top" src="<%= books[i].IMAGE%>" class = "img-thumbnail" style="height: 150px; width: 120px;">
+                                            </div>
+                                            <div class = "class-body my-3">
+                                                <h4 class="card-title d-flex justify-content-center"> <%=books[i].BOOK_NAME%> </h4>
+                                                <p class = "card-text d-flex justify-content-center"> <%=books[i].AUTHOR_NAME%> <br>
+                                                    <%=books[i].PUBLISHER_NAME%> <br>
+                                                    TK: <%=books[i].PRICE%> <br>
+                                                    </p>
+                                                <!--
+                                                <div class = " d-flex justify-content-center align-items-center">
+                                                    <button class="btn btn-primary mx-2" type="button" >
+                                                        <i class="bi bi-plus"></i>  Add to Order</button>
+                                                </div>
+                                                -->
+                                                <div class = " d-flex justify-content-center align-items-center">
+
+                                                    <button class="btn btn-primary my-2" type="button" id = "removeCart">
+                                                        <i class="bi bi-cart"></i> Remove from Cart
+                                                    </button>        
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                        &nbsp;
+                        <% } }else{ %>
+                        <tr>
+                          <td>no item in cart.</td>
+                        </tr>
+                        <% } %>
+                </div>
+            </div>
+
+            <div class="col-3">
+                <h4> Order Details </h4>
+                <p> Number of Books: <%=total[0].ITEM%></p> 
+                <p> Total Price:  <%=total[0].PRICE%> </p>
+                <input type="text my-2"  placeholder="Voucher Code" id="discount"/>
+               
+                <p> Total Discount: </p>
+                <h6> Payable Amount: </h6>
+
+                <button onclick="sendData()" class = "btn btn-primary">
+                    Place Order
+                </button>
+
+                <script>
+                    function sendData(){
+                        var discount = document.getElementById('discount').value;
+                        const data = {
+                        
+                            cartID : '<%=cart[0].CART_ID%>',
+                            discountName : discount,
+                            totalPrice : '<%=total[0].PRICE%>',
+                            totalItem : '<%=total[0].ITEM%>'
+                        };
+
+                        fetch('/nabil', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(data)
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            // Handle the response from the backend
+                        })
+                        .catch(error => {
+                            // Handle errors
+                        });
+                    }
+                    </script>
+                        
+            </div>
+
+    </div>
+
+        
+    
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+    
+  </body>

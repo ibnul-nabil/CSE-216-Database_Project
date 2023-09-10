@@ -1,0 +1,25 @@
+--cid->cart_id
+--bid->book_id
+--stk->stock
+
+CREATE OR REPLACE FUNCTION HAS_STOCK(CID IN NUMBER)
+RETURN NUMBER IS
+    BID NUMBER;
+    STK NUMBER;
+BEGIN
+	
+    FOR R in (SELECT * FROM ROKOMARI.PICKED WHERE PICKED.CART_ID=CID)
+    LOOP
+        BID := R.BOOK_ID;
+       
+        SELECT STOCK INTO STK 
+        FROM ROKOMARI.BOOK WHERE BOOK_ID = BID;
+       
+        IF R.AMOUNT > STK THEN
+           RETURN 0;
+        END IF;
+       
+    END LOOP;
+   
+    RETURN 1;
+END;

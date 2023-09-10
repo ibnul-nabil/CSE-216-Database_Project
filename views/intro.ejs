@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .container {
+            text-align: center;
+            position: fixed;
+            left : 100px;
+            right:100px;
+            top :100px;
+            height :200px;
+        }
+        .bg-img {
+          position: fixed;
+          width: 100%;
+          height: 100vh;
+          background-position: center;
+          background-size: cover;
+      
+          filter:brightness(0.55); /* Adjust the opacity value */
+          z-index: -1;
+        }
+    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>intro page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <img class="bg-img" src="/images/boisomahar.png" alt="bg-img" style="height: auto;">
+  <div class="container">
+    
+    <h1> Are you a </h1>
+    <div>
+      <a href="publisher-login">
+        <button class="btn btn-lg btn-block btn-secondary" type="submit" >Publisher</button>
+      </a>
+      
+    </div>
+    
+    <h1> or </h1>
+    <div> 
+      <a href="user-login">
+        <button class="btn btn-lg btn-block btn-secondary" type="submit" >Buyer</button>
+      </a>
+    </div>
+    
+    
+  </div>
+</body>
+</html>
