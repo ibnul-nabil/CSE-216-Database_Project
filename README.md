@@ -1,95 +1,82 @@
-📚 Boi Somahar
+# 📚 Boi Somahar  
+### *A Rokomari-style book marketplace — with a twist*
 
-A Rokomari-style book marketplace — with a twist
+Boi Somahar is a full-stack **online book-selling platform** built as part of our Database Course project.  
+The main objective was to utilize **complex database concepts** — including advanced SQL queries, relational design, and PL/SQL — while building a functional full-stack application.
 
-Boi Somahar is a full-stack online book-selling platform built as part of our Database course project.
-The central objective of the system is to implement advanced database techniques — including complex SQL queries, relational design, and PL/SQL procedures — while building a real, functional web application.
+Unlike traditional platforms, **Boi Somahar does not maintain its own warehouses**.  
+Publishers upload their books and handle delivery directly. The platform only forwards orders to the respective publisher.  
+This makes it fundamentally different from **Rokomari**, which buys books and stores them before selling.
 
-Unlike traditional book-selling platforms, Boi Somahar does not maintain its own warehouse.
-Instead, publishers list their own books, and orders are forwarded directly to publishers, who then deliver the books to customers. This eliminates the need for storage and handling by the platform.
+---
 
-🚀 Key Features
-👥 Role-Based Dashboards
+## 🚀 Key Features
 
-Publisher Dashboard
+### 👥 Role-Based Dashboards  
+#### **Publisher Dashboard**
+- Create account  
+- Add, edit, and manage books  
+- View incoming orders  
+- Update order and delivery status  
 
-Create account
+#### **Customer Dashboard**
+- Register and browse books  
+- Add to cart and place orders  
+- See multiple publisher options for the same book  
+- Filter and search books easily  
 
-Add, edit, and manage books
+---
 
-View incoming orders and update delivery status
+## 🔎 Advanced Search System
 
-Customer Dashboard
+Customers can search and filter books by:
+- Genre  
+- Author  
+- Publisher  
+- Price range  
 
-Create profile
+If a book is published by **multiple publishers**, all versions are shown so customers can choose the **best deal**.
 
-Browse and search books
+---
 
-Add books to cart and place orders
+## 🛒 Order Flow
 
-See multiple publisher options for the same book
+1. Customer places an order  
+2. System forwards order **directly to the publisher**  
+3. Publisher packages & delivers the book  
+4. Customer receives updates through dashboard  
 
-🔎 Advanced Book Search
+No warehousing. No middle storage.
 
-Customers can search books through multiple filters such as:
+---
 
-Genre
+## 🧰 Tech Stack
 
-Author
+### **Backend**
+- Node.js (Express.js)
+- OracleDB  
+- PL/SQL (stored procedures, triggers, complex queries)
 
-Publisher
+### **Frontend**
+- EJS Templates  
+- HTML, CSS, JS  
 
-Price
+---
 
-And more…
+## 🗄️ Database Highlights
 
-If the same book is published by multiple publishers, Boi Somahar shows all available options — enabling customers to choose the best deal.
+- Complex relational schema  
+- Many-to-many relationships (authors, publishers, books)  
+- Stored procedures for order processing  
+- Validation triggers  
+- Optimized SQL queries  
 
-🛒 Order Flow
+---
+## 🎯 Purpose of the Project
 
-Customer places an order
+This project was developed to demonstrate:
 
-The system forwards the order directly to the publisher
-
-Publisher handles packaging and delivery
-
-Customer receives updates through their dashboard
-
-This is different from Rokomari, where the platform buys and stores books in warehouses.
-
-🧰 Tech Stack
-Backend
-
-Node.js
-
-OracleDB (with PL/SQL procedures, triggers, complex queries)
-
-Frontend
-
-EJS Templates
-
-HTML, CSS, JavaScript
-
-🗄️ Database Highlights
-
-Complex relational schema with many-to-many relationships
-
-Stored procedures and functions to automate order flow
-
-Triggers for validation and consistency
-
-🎯 Purpose of the Project
-
-This project was developed as part of our Database Course to demonstrate:
-
-Full-stack development with Node.js and Oracle
-
-Hands-on use of complex SQL
-
-PL/SQL stored procedures and triggers
-
-Practical database-driven system design
-
-Optimized queries for search and filtering
-
-Proper indexing strategies for performance
+- Full-stack web development
+- Real-world database integration
+- Use of PL/SQL & advanced SQL techniques
+- Proper system architecture design
