@@ -82,7 +82,7 @@ async function getBookCountByAuthor(ID){
 async function searchBook(ID){
     const sql = `
     SELECT 
-        b.BOOK_ID, b.BOOK_NAME , b.PRICE , b.IMAGE , b.GENRE
+        b.BOOK_ID, b.BOOK_NAME , b.PRICE , b.IMAGE , b.GENRE ,
         a.AUTHOR_NAME , p.PUBLISHER_NAME 
         FROM ROKOMARI.BOOK b JOIN ROKOMARI.AUTHOR a 
             ON b.AUTHOR_ID = a.AUTHOR_ID 
@@ -90,8 +90,8 @@ async function searchBook(ID){
             ON b.PUBLISHER_ID = p.PUBLISHER_ID 
         WHERE (( LOWER(b.BOOK_NAME) LIKE '%'||LOWER(:id)||'%') OR
             ( LOWER(a.AUTHOR_NAME) LIKE '%'||LOWER(:id)||'%') OR 
-            ( LOWER(p.PUBLISHER_NAME) LIKE '%'||LOWER(:id)||'%')) OR
-            ( LOWER(p.GENRE) LIKE '%'||LOWER(:id)||'%'))
+            ( LOWER(p.PUBLISHER_NAME) LIKE '%'||LOWER(:id)||'%') OR
+            ( LOWER(B.GENRE) LIKE '%'||LOWER(:id)||'%'))
         
         `;
     const binds = {
@@ -116,7 +116,22 @@ async function updateBookByPublisher(bookID , price , stock){
 }
 
 
-
+async function bestRated(){
+    const sql = `
+    SELECT b.BOOK_NAME , b.IMAGE , b.PRICE , b.GENRE, a.AUTHOR_NAME , p.PUBLISHER_NAME , b.BOOK_ID  , b.RATING 
+    FROM ROKOMARI.BOOK b JOIN ROKOMARI.AUTHOR a 
+    ON b.AUTHOR_ID = a.AUTHOR_ID 
+    JOIN ROKOMARI.PUBLISHER p 
+    ON p.PUBLISHER_ID = b.PUBLISHER_ID 
+    ORDER BY b.RATING DESC
+        
+        `;
+    const binds = {
+        
+    }
+    
+    return (await database.execute(sql, binds, database.options)).rows;
+}
 
 module.exports = {
     getAllBooks ,
@@ -125,5 +140,6 @@ module.exports = {
     getBookByAuthorID,
     getBookCountByAuthor,
     searchBook,
-    updateBookByPublisher
+    updateBookByPublisher,
+    bestRated
 }

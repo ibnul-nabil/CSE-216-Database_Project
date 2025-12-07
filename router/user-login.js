@@ -3,6 +3,8 @@ const bcrypt = require('bcrypt');
 
 const DB_auth = require('../Database/auth-api');
 const authUtils = require('../utils/auth-utils');
+const DB_book = require('../Database/book-api');
+const DB_author = require('../Database/author-api');
 
 // creating router
 const router = express.Router({mergeParams : true});
@@ -40,8 +42,11 @@ router.post('/' , async (req, res)=>{
     
             // if any error, redirect to login page but with form information, else redirect to homepage
             if(errors.length == 0){
-                
-                res.render('home2.ejs',{customer : results});
+
+                const jafor  = await DB_author.getAllBooksByAuthorName('মুহম্মদ জাফর ইকবাল');
+                const humayun = await DB_author.getAllBooksByAuthorName('হুমায়ূন আহমেদ');
+                const best = await DB_book.bestRated();
+                res.render('home2.ejs',{customer : results , jafor : jafor , humayun : humayun , best :best});
                 
             } else {
                 res.render('user-login.ejs');

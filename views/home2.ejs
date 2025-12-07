@@ -69,7 +69,7 @@
             </div>
         </div>
 
-
+        <!--
         <div class="row my-3">
             <div class="d-flex justify-content-between">
                 <h3> Best Selling Books </h3>
@@ -99,92 +99,131 @@
                 </div>
             </div>
         </div>
-
+    -->
         <div class="row my-3">
             <div class="d-flex justify-content-between">
                 <h3> Top Rated Books </h3>
-                <button class="btn btn-outline-success mx-2" type="button" id = "view"> View More</button>
+                <!--<button class="btn btn-outline-success mx-2" type="button" id = "view"> View More</button>-->
             </div>
             
         </div>
         <div class="row">
-            <div class=" card col-3 mb-3">
-                <div class="d-flex justify-content-center">
-                    <img class = "card-img-top" src="logo.jpg" class = "img-thumbnail" style="height: 150px; width: 120px;">
-                </div>
-                <div class = "class-body my-3">
-                    <h4 class="card-title d-flex justify-content-center"> BookName</h4>
-                    <p class = "card-text d-flex justify-content-center"> Writer <br> Publisher <br> Price <br> Rating</p>
-                    <div class = " d-flex justify-content-center align-items-center">
-                        <a href = "view-book.html">
-                            <button class="btn btn-primary mx-2" type="button" > View Book</button>
-                        </a>
-                        <a href = "cart.html">
-                        
-                            <button class="btn btn-primary " type="button" id = "addCart">
-                                <i class="bi bi-cart"></i> Add to Cart</button>
-                        </a>
+            <% if(best.length){ for(var i = 0; i< 6; i++) {%>
+                <div class=" card col-3 mb-3">
+                    <div class="d-flex justify-content-center">
+                        <img class = "card-img-top" src="<%= best[i].IMAGE%>" class = "img-thumbnail" style="height: 150px; width: 120px;">
+                    </div>
+                    <div class = "class-body my-3">
+                        <h4 class="card-title d-flex justify-content-center">  <%=best[i].BOOK_NAME%></h4>
+                        <p class = "card-text d-flex justify-content-center"> লেখক: <%=best[i].AUTHOR_NAME%> <br> প্রকাশনী: <%=best[i].PUBLISHER_NAME%> <br> 
+                            Tk:<%=humayun[i].PRICE%> <br> Rating: <%=best[i].RATING%></p>
+                        <div class = " d-flex justify-content-center align-items-center">
+                            <a href=<%= "/book/" + best[i].BOOK_ID %>>
+                                <button class="btn btn-primary mx-2" type="button" > View Book</button>
+                            </a>
+                            <!--
+                            <a href = "cart.html">
+                            
+                                <button class="btn btn-primary " type="button" id = "addCart">
+                                    <i class="bi bi-cart"></i> Add to Cart</button>
+                            </a>
+                        -->
+                        </div>
                     </div>
                 </div>
-            </div>
+                
+                &nbsp;
+                <% } }else{ %>
+                <tr>
+                  <td>No data ever existed.</td>
+                </tr>
+                <% } %>
+            
         </div>
-
+        
         <div class="row my-3">
             <div class="d-flex justify-content-between">
                 <h3> Books from Humayun Ahmed </h3>
-                <button class="btn btn-outline-success mx-2" type="button" id = "view"> View More</button>
+                <!--<button class="btn btn-outline-success mx-2" type="button" id = "view"> View More</button>-->
             </div>
             
         </div>
+    
         <div class="row">
-            <div class=" card col-3 mb-3">
-                <div class="d-flex justify-content-center">
-                    <img class = "card-img-top" src="logo.jpg" class = "img-thumbnail" style="height: 150px; width: 120px;">
-                </div>
-                <div class = "class-body my-3">
-                    <h4 class="card-title d-flex justify-content-center"> BookName</h4>
-                    <p class = "card-text d-flex justify-content-center"> Writer <br> Publisher <br> Price <br> Rating</p>
-                    <div class = " d-flex justify-content-center align-items-center">
-                        <a href = "view-book.html">
-                            <button class="btn btn-primary mx-2" type="button" > View Book</button>
-                        </a>
-                        <a href = "cart.html">
-                        
-                            <button class="btn btn-primary " type="button" id = "addCart">
-                                <i class="bi bi-cart"></i> Add to Cart</button>
-                        </a>
+            <% if(humayun.length){ for(var i = 0; i< 3; i++) {%>
+                <div class=" card col-3 mb-3">
+                    <div class="d-flex justify-content-center">
+                        <img class = "card-img-top" src="<%= humayun[i].IMAGE%>" class = "img-thumbnail" style="height: 150px; width: 120px;">
+                    </div>
+                    <div class = "class-body my-3">
+                        <h4 class="card-title d-flex justify-content-center">  <%=humayun[i].BOOK_NAME%></h4>
+                        <p class = "card-text d-flex justify-content-center">প্রকাশনী: <%=humayun[i].PUBLISHER_NAME%> <br> 
+                            Tk: <%=humayun[i].PRICE%> <br> </p>
+                        <div class = " d-flex justify-content-center align-items-center">
+                            <a href=<%= "/book/" + humayun[i].BOOK_ID %>>
+                                <button class="btn btn-primary mx-2" type="button" > View Book</button>
+                            </a>
+                            <!--
+                            <a href = "cart.html">
+                            
+                                <button class="btn btn-primary " type="button" id = "addCart">
+                                    <i class="bi bi-cart"></i> Add to Cart</button>
+                            </a>
+                        -->
+                        </div>
                     </div>
                 </div>
-            </div>
+                
+                &nbsp;
+                <% } }else{ %>
+                <tr>
+                  <td>No data ever existed.</td>
+                </tr>
+                <% } %>
+
+           
+
+            
         </div>
 
         <div class="row my-3">
             <div class="d-flex justify-content-between">
                 <h3> Books from Muhammad Zafar Iqbal </h3>
-                <button class="btn btn-outline-success mx-2" type="button" id = "view"> View More</button>
+                <!--<button class="btn btn-outline-success mx-2" type="button" id = "view"> View More</button>-->
             </div>
             
         </div>
         <div class="row">
-            <div class=" card col-3 mb-3">
-                <div class="d-flex justify-content-center">
-                    <img class = "card-img-top" src="logo.jpg" class = "img-thumbnail" style="height: 150px; width: 120px;">
-                </div>
-                <div class = "class-body my-3">
-                    <h4 class="card-title d-flex justify-content-center"> BookName</h4>
-                    <p class = "card-text d-flex justify-content-center"> Writer <br> Publisher <br> Price <br> Rating</p>
-                    <div class = " d-flex justify-content-center align-items-center">
-                        <a href = "view-book.html">
-                            <button class="btn btn-primary mx-2" type="button" > View Book</button>
-                        </a>
-                        <a href = "cart.html">
-                        
-                            <button class="btn btn-primary " type="button" id = "addCart">
-                                <i class="bi bi-cart"></i> Add to Cart</button>
-                        </a>
+            <% if(jafor.length){ for(var i = 1; i< 4; i++) {%>
+                <div class=" card col-3 mb-3">
+                    <div class="d-flex justify-content-center">
+                        <img class = "card-img-top" src="<%= jafor[i].IMAGE%>" class = "img-thumbnail" style="height: 150px; width: 120px;">
+                    </div>
+                    <div class = "class-body my-3">
+                        <h4 class="card-title d-flex justify-content-center">  <%=jafor[i].BOOK_NAME%></h4>
+                        <p class = "card-text d-flex justify-content-center"> প্রকাশনী: <%=jafor[i].PUBLISHER_NAME%> <br> 
+                            Tk: <%=jafor[i].PRICE%> <br> </p>
+                        <div class = " d-flex justify-content-center align-items-center">
+                            <a  href=<%= "/book/" + jafor[i].BOOK_ID %>>
+                                <button class="btn btn-primary mx-2" type="button" > View Book</button>
+                            </a>
+                            <!--
+                            <a href = "cart.html">
+                            
+                                <button class="btn btn-primary " type="button" id = "addCart">
+                                    <i class="bi bi-cart"></i> Add to Cart</button>
+                            </a>
+                        -->
+                        </div>
                     </div>
                 </div>
-            </div>
+                
+                &nbsp;
+                <% } }else{ %>
+                <tr>
+                  <td>No data ever existed.</td>
+                </tr>
+                <% } %>
         </div>
 
         

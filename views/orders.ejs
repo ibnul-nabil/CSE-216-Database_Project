@@ -58,12 +58,13 @@
         <table class="table">
           <thead>
             <tr>
+              <th scope="col"> Buyer </th>
               <th scope="col"> Name </th>
               <th scope="col"> Author </th>
               <th scope="col"> ISBN </th>
               <th scope="col"> PRICE </th>
               <th scope="col"> STOCK </th>
-              <th scope="col"> Buyer </th>
+              
               <!--<th scope="col">Staus</th> -->
             </tr>
           </thead>
@@ -83,12 +84,13 @@
                     </select>
                 </td>
               -->
+              <td> <%=list[i].NAME%> <br>  <%=list[i].EMAIL%> <br> <%=list[i].PHONE_NO%> <br>  <%=list[i].ADDRESS%>  </td>
+
               <td> <%=list[i].BOOK_NAME%> </td>
               <td> <%=list[i].AUTHOR_NAME%> </td>
               <td> <%=list[i].ISBN%> </td>
               <td> <%=list[i].PRICE%> </td>
               <td> <%=list[i].STOCK%> </td>
-              <td> <%=list[i].NAME%> <br>  <%=list[i].EMAIL%> <br> <%=list[i].PHONE_NO%> <br>  <%=list[i].ADDRESS%>  </td>
               
               
         
